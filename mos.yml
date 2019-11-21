@@ -1,0 +1,44 @@
+author: Smruti Ranjan <er.ssrm@gmail.com>
+description: mJS example of the ESP32's Built-in Touch & Hall Sensors
+version: 1.0
+
+libs_version: ${mos.version}
+modules_version: ${mos.version}
+mongoose_os_version: ${mos.version}
+
+tags:
+  - js
+
+filesystem:
+  - fs
+
+config_schema:
+  - ["temperature", "o", {title: "Temperature related configurations"}]
+  - ["temperature.basis", "d", 107, {title: "Ambient temperature to act as reference:"}]
+  - ["temperature.unit", "s", "Fahrenheit", {title: "Temperature unit:"}]
+  - ["led", "o", {title: "LED configurations"}]
+  - ["led.gpio", "i", 2, {title: "Built-in LED GPIO:"}]
+  - ["sleep_duration", "d", 10, {title: "Time in minutes after for which the device should (deep) sleep:"}]
+  - ["mqtt.enable", "b", true, {title: "Enable MQTT service:"}]
+  - ["mqtt.server", "s", "a2kjz65eoadjmx-ats.iot.us-east-1.amazonaws.com", {title: "MQTT server to publish to."}]
+  - ["mqtt.ssl_ca_cert", "s", "ca.pem", {title: "Path to trusted CA certificate, relative to 'fs'."}]
+  - ["mqtt.ssl_cert", "s", "bd8a310c1e-certificate.pem", {title: "Path to trusted SSL certificate, relative to 'fs'."}]
+  - ["mqtt.sssl_key", "s", "bd8a310c1e-private.pem", {title: "Path to trusted private, relative to 'fs'."}]
+  
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/ca-bundle
+  - origin: https://github.com/mongoose-os-libs/core
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/rpc-service-gpio
+  - origin: https://github.com/mongoose-os-libs/rpc-mqtt
+  - origin: https://github.com/mongoose-os-libs/mqtt
+  - origin: https://github.com/mongoose-os-libs/wifi
+
+  - origin: https://github.com/mongoose-os-libs/mjs
+  - origin: https://github.com/mongoose-os-libs/esp32-touchpad
+  - origin: https://github.com/mongoose-os-libs/aws
+
+manifest_version: 2017-05-18
